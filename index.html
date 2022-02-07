@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+
+<html lang="pl">
+<head>
+	<meta charset="UTF-8" >
+	<title>Sortowanie bąbelkowe</title>
+	<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@200&display=swap" rel="stylesheet">
+	<link rel="icon" href="favicon.ico">
+	<link rel="stylesheet" href="style.css">
+	<script type="text/x-mathjax-config">
+		MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+	  </script>
+	  <script
+		src="http://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+	  </script>
+	  
+</head>
+
+<body>
+	<nav class="navbar" id="navbar">
+     <div class="logo">TI</div>
+       <div class="menu tracking-in-expand">
+		<ul>
+			<li><a href="#definicja" >Definicja</a></li>
+         	<li><a href="#algorithm" >Działanie </a></li>
+			 <li><a href="#diagram" >Schemat blokowy </a></li>
+		 	<li><a href="#pseudocode" >Pseudokod </a></li>
+		 	<li><a href="#animation" >Animacja </a></li>
+		 	<li><a href="#videoDiv">Wideo</a></li>
+		</ul>
+       </div>
+   </nav>
+	<div class="main">
+
+		<article id="definicja">
+			<header><h1 class ="text-focus-in">Sortowanie bąbelkowe</h1></header>
+			<p><b>Sortowanie bąbelkowe</b> - jeden z najprostszych w implementacji algorytmów porządkujących dane.</p>
+			<p>Nazwa wzięła się stąd, że dane podczas sortowania - tak jak bąbelki w napoju gazowanym - przemieszczają się ku prawej stronie i układają się w odpowiednim szyku.</p>
+		</article>
+
+		<article id="algorithm">	
+			<h2 class ="bounce-in-top"><a href="#navbar" >Działanie</a></h2>
+			<p>Algorytm działa następująco:</p>
+			<p>W każdym przejściu pętli wewnętrznej porównywane są ze sobą dwie kolejne wartości i w razie potrzemy są zamieniane miejscami. W jednym cyklu pętli wewnętrznej, największa liczba (tak jak bąbelki w napoju gazowanym) w zbiorze będzie się przemieszczała na ostatnią pozycję. W ten sposób otrzymujemy podzbiór częściowo już posortowany. Czynności te powtarzamy dla zbioru pominiętego o elementy już poukładane.</p><br/>
+			<p>Spróbujmy zrozumieć to na zasadzie przykładu. Mamy następujące dane:</p>
+			<div class="dane">\( 7\ 5\ 4\ 3\ 9\ 8\ 1 \)</div>
+			<p>Pętla wewnętrza porówna ze sobą elementy. Dla <i>n</i> elementów zostanie wykonanych <i>n-1</i> porównań:</p>
+			<div class="dane">
+				\( \overset{5\ 7}{\overbrace{7\ 5}}\ 4\ 3\ 9\ 8\ 1  \)<br/>
+				\( 5\ \overset{4\ 7}{\overbrace{7\ 4}}\ 3\ 9\ 8\ 1  \)<br/>
+				\( 5\ 4\ \overset{3\ 7}{\overbrace{7\ 3}}\ 9\ 8\ 1  \)<br/>
+				\( 5\ 4\ 3\ \overset{7\ 9}{\overbrace{7\ 9}}\ 8\ 1  \)<br/>
+				\( 5\ 4\ 3\ 7\ \overset{8\ 9}{\overbrace{9\ 8}}\ 1  \)<br/>
+				\( 5\ 4\ 3\ 7\ 8\ \overset{1\ 9}{\overbrace{9\ 1}}  \)<br/><br/>
+			</div>
+			<p>Po ostatniej pętli elementy są poukładane następująco:</p>
+			<div class="dane">\( 5\ 4\ 3\ 7\ 8\ 1\ 9 \)</div>
+			<p>Jak widać, <b>największa</b> cyfra wskoczyła na <b>ostatnią</b> pozycję.<br/><br/>
+			Został nam teraz do posortowania zbiór elementów pominięty o tą liczbę. Powtarzamy teraz czynności dla <i>n-1</i> elementów.
+			Następna największa cyfra ( w tym przypadku - 8 ) wkoczy na przedostatnią pozycję.<br/><br/>
+			Kroki będą powtarzane, aż otrzymamy zbiór posortowany.
+			</p>
+		</article>
+
+		<div id="diagram">	
+			<h2 class ="bounce-in-top"><a href="#navbar" >Schemat blokowy</a></h2>
+				<figure>
+					<img src="https://eduinf.waw.pl/inf/alg/003_sort/images/004_01.gif" alt="Schemat blokowy">  
+					<figcaption><i>Rys.1. Schemat blokowy algorytmu sortowania bąbelkowego</i>
+						[<a href="https://eduinf.waw.pl/inf/alg/003_sort/0004.php" target="_blank">link</a>]
+					</figcaption>
+				</figure>
+		</div>
+
+		<article id="pseudocode">
+			<h2 class="bounce-in-top"><a href="#navbar" >Pseudokod</a></h2>
+			<div class="pseudocode">
+				<p>\(procedure\ bubbleSort(A\ :\ lista\ elementów\ do\ posortowania) \)<br/>
+					\(\ \ for\ (j=1;\ j\ &lt; n-1;\ j++)\ do:\)<br/>
+					\(\ \ \ \ \ \ for\ (i=1;\ i\ &lt; n-1;\ i++)\ do:\)<br/>
+					\(\ \ \ \ \ \ \ \ if\ A[i]\ &gt; A[i+1]\ then\)<br/>
+					\(\ \ \ \ \ \ \ \ \ \ swap(\ A[i],\ A[i+1])\)<br/>
+					\(\ \ \ \ \ \ \ \ end\ if\)<br/>
+					\(\ \ \ \ \ \ end\ for\)<br/>
+					\(\ \ \ \ end\ for\)<br/>
+					\(end\ procedure\)<br/>
+					</p>
+			</div>
+		</article>
+	
+		<div id="animation">
+		  <h2 class="bounce-in-top"><a href="#navbar" >Animacja</a></h2>
+			<div class="button">	
+					<input type="button" id="startButton" class="startButton" value="Start" onclick="start()"/>
+			</div>			
+			<div class="animation">
+				<canvas id="canvas"></canvas>
+			</div>
+		</div>
+		
+		<div id="videoDiv">
+		   <h2 class="bounce-in-top"><a href="#navbar" >Wideo</a></h2>
+			<p>Nadal nie rozumiesz ? Obejrzyj wideo !</p>
+			<div class="video">
+				<iframe width="785" height="440" style="margin-top: 60px;" src ="https://www.youtube.com/embed/4s44rXRdmhQ" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>			
+			</div>
+		</div>
+		
+	</div>
+	<footer>Created by <a href="mailto:rojek.aleksandra1@gmail.com">Aleksandra Rojek</a></footer>
+	<script src="script.js"></script> 
+</body>
+</html>
